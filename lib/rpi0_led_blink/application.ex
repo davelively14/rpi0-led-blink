@@ -8,7 +8,7 @@ defmodule Rpi0LedBlink.Application do
 
     # Define workers and child supervisors to be supervised
     children = [
-      # worker(Rpi0LedBlink.Worker, [arg1, arg2, arg3]),
+      worker(Rpi0LedBlink, [nil, nil], [function: :start]),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

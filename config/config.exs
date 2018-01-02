@@ -25,3 +25,5 @@ config :bootloader,
 # Uncomment to use target specific configurations
 
 # import_config "#{Mix.Project.config[:target]}.exs"
+config :rpi3_led_blink, led_list: [ :green ]
+config :nerves_leds, names: [ green: "led0" ]

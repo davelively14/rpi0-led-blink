@@ -1,7 +1,7 @@
 defmodule Rpi0LedBlink.Mixfile do
   use Mix.Project
 
-  @target System.get_env("MIX_TARGET") || "host"
+  @target System.get_env("MIX_TARGET") || "rpi0"
 
   Mix.shell.info([:green, """
   Mix environment
@@ -37,8 +37,8 @@ defmodule Rpi0LedBlink.Mixfile do
     [extra_applications: [:logger]]
   end
   def application(_target) do
-    [mod: {Rpi0LedBlink.Application, []},
-     extra_applications: [:logger]]
+    [mod: {Rpi0LedBlink, []},
+     extra_applications: [:logger, :nerves_leds]]
   end
 
   # Dependencies can be Hex packages:
@@ -51,7 +51,11 @@ defmodule Rpi0LedBlink.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   def deps do
-    [{:nerves, "~> 0.7", runtime: false}] ++
+    [
+      {:nerves, "~> 0.7", runtime: false},
+      {:nerves_leds, "~> 0.8.0"},
+      {:distillery, "~> 1.5", runtime: false}
+    ] ++
     deps(@target)
   end
 
